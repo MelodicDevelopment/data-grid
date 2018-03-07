@@ -42,9 +42,7 @@
 
 .header-spacer {
 	display: inline-block;
-	width: 25px;
-	background: transparent;
-	line-height: 40px;
+	width: 17px;
 }
 
 /** data cells */
@@ -66,7 +64,9 @@
 /** pinned columns */
 
 .left-pinned-columns {
-	float: left;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
 }
 
 .left-pinned-columns span {
@@ -77,6 +77,7 @@
 
 .header-container {
 	overflow: hidden;
+	padding-right: 17px;
 }
 
 .header-container .header-cell:not(:first-child), .data-container .data-cell:not(:first-child) {
@@ -92,30 +93,24 @@
 	bottom: 0px;
 	left: 0px;
 	overflow: hidden;
-	overflow-y: auto;
+}
+
+.data-area .left-pinned-columns {
+	overflow: auto;
+	margin-bottom: 17px;
+	-ms-overflow-style: none;
+}
+.data-area .left-pinned-columns::-webkit-scrollbar {
+	display: none;
 }
 
 /** data container */
 
 .data-container {
 	position: absolute;
+	top: 0px;
 	right: 0px;
-	left: 0px;
-	overflow: hidden;
-	overflow-x: auto;
-}
-
-/** data container scroller */
-
-.data-container-scroller {
-	position: absolute;
-	height: 17px;
-	right: 17px;
 	bottom: 0px;
 	left: 0px;
 	overflow: auto;
-}
-
-.data-container-scroller .spacer {
-	height: 1px;
 }
