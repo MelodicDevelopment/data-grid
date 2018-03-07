@@ -35,7 +35,7 @@
 	gridDataScroller.addEventListener('scroll', () => {
 		/** clear the isScrolling timeout and reset */
 		clearTimeout(isScrolling);
-		isScrolling = setTimeout(syncScrollLeft.bind(null, gridDataScroller, gridDataContainer), 0);
+		isScrolling = setTimeout(syncScrollLeft.bind(null, gridDataScroller, gridDataContainer), 10);
 	}, { passive: true });
 
 	/** sync the scrollLeft values */
