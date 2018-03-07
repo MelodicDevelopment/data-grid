@@ -10,19 +10,19 @@
 	/** set the width of the data container scroller spacer */
 	gridDataScrollerSpacer.style.width = gridHeaderContainer.scrollWidth + 'px';
 
-	/** add the event listeners */
+	/** create flag to track horizontal scrolling */
+	let isScrolling;
+
+	/** add the scroll event listeners */
 	gridDataArea.addEventListener('scroll', () => {
 		/** check if the scrollTop + gridDataArea height is equal to scrollHeight */
 		const bounds = gridDataArea.getClientRects()[0];
 		const position = gridDataArea.scrollTop + bounds.height;
 		if (position === gridDataArea.scrollHeight) {
-			gridDataScroller.style.display = 'none';
+			gridDataScroller.style.visibility = 'hidden';
 		} else {
-			gridDataScroller.style.display = 'block';
+			gridDataScroller.style.visibility = 'visible';
 		}
-
-		// console.log(`${gridDataArea.scrollHeight} | ${gridDataArea.scrollTop} | ${gridDataArea.clientHeight} | ${gridDataArea.clientTop}`);
-		// console.log(gridDataArea.getBoundingClientRect());
 	});
 	gridDataContainer.addEventListener('scroll', () => {
 		/** scroll the other grid pieces */
@@ -30,7 +30,13 @@
 		gridDataScroller.scrollLeft = gridDataContainer.scrollLeft;
 	}, { passive: true });
 	gridDataScroller.addEventListener('scroll', () => {
-		/** scroll the other grid pieces */
-		gridDataContainer.scrollLeft = gridDataScroller.scrollLeft;
+		/** clear the isScrolling timeout and reset */
+		clearTimeout(isScrolling);
+		isScrolling = setTimeout(syncScrollLeft.bind(null, gridDataScroller, gridDataContainer), 50);
 	}, { passive: true });
+
+	/** sync the scrollLeft values */
+	const syncScrollLeft = (primary, secondary) => {
+		secondary.scrollLeft = primary.scrollLeft;
+	};
 })();
