@@ -1,0 +1,121 @@
+/** general grid styles */
+
+.nha-grid {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	overflow: hidden;
+	background-color: rgb(225, 229, 236);
+}
+
+/** header area */
+
+.header-area {
+	position: relative;
+}
+
+.header-row, .data-row {
+	height: 40px;
+	white-space: nowrap;
+	margin-bottom: 1px;
+	font-size: 0;
+}
+
+/** header cells */
+
+.header-cell {
+	display: inline-block;
+	width: 120px;
+	background: rgb(242, 244, 251);
+	line-height: 40px;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.header-cell span {
+	display: block;
+	padding: 0px 15px;
+	text-align: center;
+}
+
+.header-spacer {
+	display: inline-block;
+	width: 25px;
+	background: transparent;
+	line-height: 40px;
+}
+
+/** data cells */
+
+.data-cell {
+	display: inline-block;
+	width: 120px;
+	background: #FFFFFF;
+	line-height: 40px;
+	font-size: 12px;
+}
+
+.data-cell span {
+	display: block;
+	padding: 0px 15px;
+	text-align: center;
+}
+
+/** pinned columns */
+
+.left-pinned-columns {
+	float: left;
+}
+
+.left-pinned-columns span {
+	text-align: left;
+}
+
+/** header container */
+
+.header-container {
+	overflow: hidden;
+}
+
+.header-container .header-cell:not(:first-child), .data-container .data-cell:not(:first-child) {
+	margin-left: 1px;
+}
+
+/** data area */
+
+.data-area {
+	position: absolute;
+	top: 41px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+/** data container */
+
+.data-container {
+	position: absolute;
+	right: 0px;
+	left: 0px;
+	overflow: hidden;
+	overflow-x: auto;
+}
+
+/** data container scroller */
+
+.data-container-scroller {
+	position: absolute;
+	height: 10px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	overflow: auto;
+}
+
+.data-container-scroller .spacer {
+	height: 1px;
+}
