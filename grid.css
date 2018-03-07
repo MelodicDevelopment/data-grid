@@ -110,7 +110,7 @@
 .data-container-scroller {
 	position: absolute;
 	height: 17px;
-	right: 0px;
+	right: 17px;
 	bottom: 0px;
 	left: 0px;
 	overflow: auto;
