@@ -45,6 +45,11 @@
 	width: 17px;
 }
 
+.row-spacer {
+	display: inline-block;
+	height: 14px;
+}
+
 /** data cells */
 
 .data-cell {
