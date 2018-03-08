@@ -55,7 +55,6 @@
 .data-cell {
 	display: inline-block;
 	width: 120px;
-	background: #FFFFFF;
 	line-height: 40px;
 	font-size: 12px;
 	text-align: center;
@@ -124,4 +123,11 @@
 	left: 0px;
 	overflow: auto;
 	overflow-y: hidden;
+}
+
+.data-area .data-row:nth-child(odd) .data-cell {
+	background: #FFFFFF;
+}
+.data-area .data-row:nth-child(even) .data-cell {
+	background: rgb(250, 251, 255);
 }
