@@ -23,7 +23,13 @@
 
 	/** adjust the bottom of the grid area */
 	const adjustGridArea = () => {
+		/** calculate the bottom */
+		let bottom = gridDataArea.scrollTop * -1;
+		const bounds = gridDataArea.getBoundingClientRect();
+		const maxBottom = (gridDataArea.scrollHeight - bounds.height) * -1;
+		if (maxBottom > bottom) bottom = maxBottom;
+
 		/** adjust the bottom for the data container */
-		gridDataContainer.style.bottom = `${gridDataArea.scrollTop * -1}px`;
+		gridDataContainer.style.bottom = `${bottom}px`;
 	};
 })();
