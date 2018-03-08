@@ -60,6 +60,10 @@
 	font-size: 12px;
 }
 
+.data-cell.active {
+	box-shadow: inset 0px 0px 0px 2px rgb(63, 127, 238);
+}
+
 .data-cell span {
 	display: block;
 	padding: 0px 15px;
@@ -93,7 +97,7 @@
 
 .data-area {
 	position: absolute;
-	top: 41px;
+	top: 82px;
 	right: 0px;
 	bottom: 0px;
 	left: 0px;
