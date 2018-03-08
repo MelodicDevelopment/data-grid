@@ -46,7 +46,8 @@
 }
 
 .row-spacer {
-	height: 25px;
+	display: inline-block;
+	height: 14px;
 }
 
 /** data cells */
@@ -101,7 +102,6 @@
 
 .data-area .left-pinned-columns {
 	overflow: auto;
-	margin-bottom: -25px;
 	-ms-overflow-style: none;
 }
 .data-area .left-pinned-columns::-webkit-scrollbar {
