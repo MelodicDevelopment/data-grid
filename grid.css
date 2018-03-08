@@ -92,20 +92,16 @@
 	right: 0px;
 	bottom: 0px;
 	left: 0px;
-	overflow: hidden;
-}
-
-.data-area .left-pinned-columns {
-	overflow: hidden;
+	overflow: auto;
+	overflow-x: hidden;
 }
 
 /** data container */
 
 .data-container {
 	position: absolute;
-	top: 0px;
 	right: 0px;
-	bottom: 0px;
 	left: 0px;
 	overflow: auto;
+	overflow-y: hidden;
 }
