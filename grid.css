@@ -58,16 +58,25 @@
 	background: #FFFFFF;
 	line-height: 40px;
 	font-size: 12px;
+	text-align: center;
 }
 
 .data-cell.active {
 	box-shadow: inset 0px 0px 0px 2px rgb(63, 127, 238);
 }
 
+.data-cell.active input {
+	width: calc(100% - 6px);
+	text-align: center;
+	border: none;
+	font-size: 12px;
+	outline: none;
+	line-height: 34px;
+}
+
 .data-cell span {
 	display: block;
 	padding: 0px 15px;
-	text-align: center;
 }
 
 /** pinned columns */
