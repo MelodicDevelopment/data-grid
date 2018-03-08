@@ -45,11 +45,6 @@
 	width: 17px;
 }
 
-.row-spacer {
-	display: inline-block;
-	height: 14px;
-}
-
 /** data cells */
 
 .data-cell {
@@ -101,11 +96,7 @@
 }
 
 .data-area .left-pinned-columns {
-	overflow: auto;
-	-ms-overflow-style: none;
-}
-.data-area .left-pinned-columns::-webkit-scrollbar {
-	display: none;
+	overflow: hidden;
 }
 
 /** data container */
