@@ -31,14 +31,14 @@
 	--cell-height7: calc((var(--cell-height1) * 7) + 6px);
 	--cell-height8: calc((var(--cell-height1) * 8) + 7px);
 
-	--pinned-left-margin1: calc(var(--cell-width1) + 1px);
-	--pinned-left-margin2: calc(var(--cell-width2) + 1px);
-	--pinned-left-margin3: calc(var(--cell-width3) + 1px);
-	--pinned-left-margin4: calc(var(--cell-width4) + 1px);
-	--pinned-left-margin5: calc(var(--cell-width5) + 1px);
-	--pinned-left-margin6: calc(var(--cell-width6) + 1px);
-	--pinned-left-margin7: calc(var(--cell-width7) + 1px);
-	--pinned-left-margin8: calc(var(--cell-width8) + 1px);
+	--pinned-left-margin1: calc(var(--cell-width1) + 4px);
+	--pinned-left-margin2: calc(var(--cell-width2) + 4px);
+	--pinned-left-margin3: calc(var(--cell-width3) + 4px);
+	--pinned-left-margin4: calc(var(--cell-width4) + 4px);
+	--pinned-left-margin5: calc(var(--cell-width5) + 4px);
+	--pinned-left-margin6: calc(var(--cell-width6) + 4px);
+	--pinned-left-margin7: calc(var(--cell-width7) + 4px);
+	--pinned-left-margin8: calc(var(--cell-width8) + 4px);
 }
 
 /** pinned / unpinned columns */
@@ -53,12 +53,12 @@
 	white-space: nowrap;
 	overflow: hidden;
 	padding-right: 17px;
-	padding-left: 3px;
 }
 
 /** column styling */
 
 .column {
+	position: relative;
 	display: inline-block;
 }
 
@@ -107,8 +107,12 @@
 
 .header-area .unpinned-column-group .column:last-child::after {
 	display: block;
-	content: '';
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: -17px;
 	width: 17px;
+	content: '';
 }
 
 /** data area */
@@ -133,7 +137,7 @@
 .data-row:last-child::after {
 	display: block;
 	content: '';
-	height: 14px;
+	height: 17px;
 }
 
 .data-area .unpinned-column-group {
