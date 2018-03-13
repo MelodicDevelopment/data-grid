@@ -86,6 +86,12 @@
 .cell:not(:first-child) {
 	margin-left: 1px;
 }
+.cell.left { text-align: left; }
+.cell.right { text-align: right; }
+.cell span {
+	display: block;
+	padding: 0px 15px;
+}
 
 /** header area */
 
