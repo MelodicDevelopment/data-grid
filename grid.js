@@ -2,8 +2,8 @@
 (() => {
 	/** get the grid pieces */
 	const gridDataArea = document.querySelector('.data-area');
-	const gridDataContainer = document.querySelector('.data-container');
-	const gridHeaderContainer = document.querySelector('.header-container');
+	const gridDataContainer = document.querySelector('.data-area .unpinned-column-group');
+	const gridHeaderContainer = document.querySelector('.header-area .unpinned-column-group');
 
 	/** add the scroll event listeners */
 	gridDataArea.addEventListener('scroll', () => {

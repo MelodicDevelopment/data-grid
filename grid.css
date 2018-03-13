@@ -1,6 +1,6 @@
-/** general grid styles */
+/** nha data grid styles */
 
-.nha-grid {
+.nha-data-grid {
 	position: absolute;
 	top: 0px;
 	right: 0px;
@@ -8,114 +8,129 @@
 	left: 0px;
 	overflow: hidden;
 	background-color: rgb(225, 229, 236);
+
+	--cell-width1: 100px;
+	--cell-width2: calc((var(--cell-width1) * 2) + 1px);
+	--cell-width3: calc((var(--cell-width1) * 3) + 2px);
+	--cell-width4: calc((var(--cell-width1) * 4) + 3px);
+	--cell-width5: calc((var(--cell-width1) * 5) + 4px);
+	--cell-width6: calc((var(--cell-width1) * 6) + 5px);
+	--cell-width7: calc((var(--cell-width1) * 7) + 6px);
+	--cell-width8: calc((var(--cell-width1) * 8) + 7px);
+	--cell-width9: calc((var(--cell-width1) * 9) + 8px);
+	--cell-width10: calc((var(--cell-width1) * 10) + 9px);
+	--cell-width11: calc((var(--cell-width1) * 11) + 10px);
+	--cell-width12: calc((var(--cell-width1) * 12) + 11px);
+
+	--cell-height1: 40px;
+	--cell-height2: calc((var(--cell-height1) * 2) + 1px);
+	--cell-height3: calc((var(--cell-height1) * 3) + 2px);
+	--cell-height4: calc((var(--cell-height1) * 4) + 3px);
+	--cell-height5: calc((var(--cell-height1) * 5) + 4px);
+	--cell-height6: calc((var(--cell-height1) * 6) + 5px);
+	--cell-height7: calc((var(--cell-height1) * 7) + 6px);
+	--cell-height8: calc((var(--cell-height1) * 8) + 7px);
+
+	--pinned-left-margin1: calc(var(--cell-width1) + 1px);
+	--pinned-left-margin2: calc(var(--cell-width2) + 1px);
+	--pinned-left-margin3: calc(var(--cell-width3) + 1px);
+	--pinned-left-margin4: calc(var(--cell-width4) + 1px);
+	--pinned-left-margin5: calc(var(--cell-width5) + 1px);
+	--pinned-left-margin6: calc(var(--cell-width6) + 1px);
+	--pinned-left-margin7: calc(var(--cell-width7) + 1px);
+	--pinned-left-margin8: calc(var(--cell-width8) + 1px);
+}
+
+/** pinned / unpinned columns */
+
+.pinned-column-group {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+}
+
+.unpinned-column-group {
+	white-space: nowrap;
+	overflow: hidden;
+	padding-right: 17px;
+	padding-left: 3px;
+}
+
+/** column styling */
+
+.column {
+	display: inline-block;
+}
+
+.column:not(:first-child) {
+	margin-left: 1px;
+}
+
+/** row styling */
+
+.row {
+	white-space: nowrap;
+	margin-bottom: 1px;
+}
+
+/** cell styling */
+
+.cell {
+	display: inline-block;
+	line-height: var(--cell-height1);
+	height: var(--cell-height1);
+	width: var(--cell-width1);
+	text-align: center;
+	font-size: 12px;
+}
+.cell:not(:first-child) {
+	margin-left: 1px;
 }
 
 /** header area */
 
 .header-area {
 	position: relative;
-}
-
-.header-row, .data-row {
-	height: 40px;
-	white-space: nowrap;
-	margin-bottom: 1px;
 	font-size: 0;
 }
 
-/** header cells */
-
-.header-cell {
-	display: inline-block;
-	width: 120px;
+.header-area .cell {
 	background: rgb(242, 244, 251);
-	line-height: 40px;
 	font-weight: bold;
-	font-size: 12px;
 }
 
-.header-cell span {
+.header-area .unpinned-column-group .column:last-child::after {
 	display: block;
-	padding: 0px 15px;
-	text-align: center;
-}
-
-.header-spacer {
-	display: inline-block;
+	content: '';
 	width: 17px;
-}
-
-.row-spacer {
-	display: inline-block;
-	height: 14px;
-}
-
-/** data cells */
-
-.data-cell {
-	display: inline-block;
-	width: 120px;
-	line-height: 40px;
-	font-size: 12px;
-	text-align: center;
-}
-
-.data-cell.active {
-	box-shadow: inset 0px 0px 0px 2px rgb(63, 127, 238);
-}
-
-.data-cell.active input {
-	width: calc(100% - 6px);
-	text-align: center;
-	border: none;
-	font-size: 12px;
-	outline: none;
-	line-height: 34px;
-}
-
-.data-cell span {
-	display: block;
-	padding: 0px 15px;
-}
-
-/** pinned columns */
-
-.left-pinned-columns {
-	position: absolute;
-	top: 0px;
-	bottom: 0px;
-}
-
-.left-pinned-columns span {
-	text-align: left;
-}
-
-/** header container */
-
-.header-container {
-	overflow: hidden;
-	padding-right: 17px;
-}
-
-.header-container .header-cell:not(:first-child), .data-container .data-cell:not(:first-child) {
-	margin-left: 1px;
 }
 
 /** data area */
 
 .data-area {
 	position: absolute;
-	top: 82px;
+	top: 41px;
 	right: 0px;
 	bottom: 0px;
 	left: 0px;
+	margin-top: 1px;
 	overflow: auto;
 	overflow-x: hidden;
 }
 
-/** data container */
+.data-row {
+	height: 40px;
+	white-space: nowrap;
+	margin-bottom: 1px;
+	font-size: 0;
+}
+.data-row:last-child::after {
+	display: block;
+	content: '';
+	height: 14px;
+}
 
-.data-container {
+.data-area .unpinned-column-group {
 	position: absolute;
 	top: 0px;
 	right: 0px;
@@ -125,9 +140,51 @@
 	overflow-y: hidden;
 }
 
-.data-area .data-row:nth-child(odd) .data-cell {
+.data-area .data-row:nth-child(odd) .cell {
 	background: #FFFFFF;
 }
-.data-area .data-row:nth-child(even) .data-cell {
+.data-area .data-row:nth-child(even) .cell {
 	background: rgb(250, 251, 255);
 }
+
+/** sizing classes */
+
+.cw1 { width: var(--cell-width1); }
+.cw2 { width: var(--cell-width2); }
+.cw3 { width: var(--cell-width3); }
+.cw4 { width: var(--cell-width4); }
+.cw5 { width: var(--cell-width5); }
+.cw6 { width: var(--cell-width6); }
+.cw7 { width: var(--cell-width7); }
+.cw8 { width: var(--cell-width8); }
+.cw9 { width: var(--cell-width9); }
+.cw10 { width: var(--cell-width10); }
+.cw11 { width: var(--cell-width11); }
+.cw12 { width: var(--cell-width12); }
+
+.ch1 { height: var(--cell-height1); }
+.ch2 { height: var(--cell-height2); }
+.ch3 { height: var(--cell-height3); }
+.ch4 { height: var(--cell-height4); }
+.ch5 { height: var(--cell-height5); }
+.ch6 { height: var(--cell-height6); }
+.ch7 { height: var(--cell-height7); }
+.ch8 { height: var(--cell-height8); }
+
+.ml1 { margin-left: var(--pinned-left-margin1); }
+.ml2 { margin-left: var(--pinned-left-margin2); }
+.ml3 { margin-left: var(--pinned-left-margin3); }
+.ml4 { margin-left: var(--pinned-left-margin4); }
+.ml5 { margin-left: var(--pinned-left-margin5); }
+.ml6 { margin-left: var(--pinned-left-margin6); }
+.ml7 { margin-left: var(--pinned-left-margin7); }
+.ml8 { margin-left: var(--pinned-left-margin8); }
+
+.top1 { top: var(--cell-height1); }
+.top2 { top: var(--cell-height2); }
+.top3 { top: var(--cell-height3); }
+.top4 { top: var(--cell-height4); }
+.top5 { top: var(--cell-height5); }
+.top6 { top: var(--cell-height6); }
+.top7 { top: var(--cell-height7); }
+.top8 { top: var(--cell-height8); }
