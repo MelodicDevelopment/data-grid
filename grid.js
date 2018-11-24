@@ -72,14 +72,13 @@ const configureCells = () => {
 			cell.addEventListener('click', () => {
 				/** set active state */
 				removeActiveCellState();
-				cell.classList.add('active');
-
+				
 				/** set the grid active row and cell */
 				gridProperties.activeRow = parseInt(cell.getAttribute('row-index'));
 				gridProperties.activeCell = parseInt(cell.getAttribute('cell-index'));
 
-				/** scroll the cell into view */
-				scrollIntoView(cell);
+				/** set the active cell */
+				setActiveCell(cell);
 			});
 
 			/** add keyup event */
@@ -95,10 +94,9 @@ const configureCells = () => {
 
 				/** find the active cell */
 				const newActiveCell = document.querySelector(`.data-area .cell[row-index="${gridProperties.activeRow}"][cell-index="${gridProperties.activeCell}"]`);
-				newActiveCell.classList.add('active');
 
-				/** scroll the cell into view */
-				scrollIntoView(newActiveCell);
+				/** set the cell to active */
+				setActiveCell(newActiveCell);
 			});
 
 			/** kill keydown event to prevent scrolling */
@@ -114,6 +112,25 @@ const configureCells = () => {
 const removeActiveCellState = () => {
 	const allCells = Array.from(document.querySelectorAll('.data-area .cell'));
 	allCells.forEach(c => c.classList.remove('active'));
+};
+
+/** set cell as active */
+const setActiveCell = (cell) => {
+	/** scroll the cell into view */
+	scrollIntoView(cell);
+
+	/** put in setTimeout because something is screwy with scrolling */
+	setTimeout(() => {
+		/** give the active class to the cell */
+		cell.classList.add('active');
+		cell.focus();
+
+		/** set focus on the input (if any) */
+		const input = cell.querySelector('input');
+		if (input) setTimeout(() => {
+			input.focus();
+		}, 10);
+	}, 10);
 };
 
 /** scroll cell into view */
