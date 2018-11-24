@@ -76,6 +76,7 @@
 /** cell styling */
 
 .cell {
+	position: relative;
 	display: inline-block;
 	line-height: var(--cell-height1);
 	height: var(--cell-height1);
@@ -91,6 +92,19 @@
 .cell span {
 	display: block;
 	padding: 0px 15px;
+}
+.cell.active::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	border: 2px solid blue;
+}
+.cell:focus {
+	outline: none;
 }
 
 /** header area */
