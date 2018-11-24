@@ -83,8 +83,6 @@ const configureCells = () => {
 
 			/** add keyup event */
 			cell.addEventListener('keyup', (event) => {
-				console.log(event);
-
 				/** check for keycode */
 				if (![9, 13, 37, 38, 39, 40].includes(event.keyCode)) return;
 
