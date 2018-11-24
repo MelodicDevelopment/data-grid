@@ -83,14 +83,19 @@ const configureCells = () => {
 
 			/** add keyup event */
 			cell.addEventListener('keyup', (event) => {
+				console.log(event);
+
+				/** check for keycode */
+				if (![9, 13, 37, 38, 39, 40].includes(event.keyCode)) return;
+
 				/** remove the active cell state */
 				removeActiveCellState();
 
 				/** set the active row and cell */
 				if (event.keyCode === 38 && gridProperties.activeRow != 0) gridProperties.activeRow--; // up
-				if (event.keyCode === 40 && gridProperties.activeRow < (dataRows.length - 1)) gridProperties.activeRow++; // down
+				if ([13, 40].includes(event.keyCode) && gridProperties.activeRow < (dataRows.length - 1)) gridProperties.activeRow++; // down
 				if (event.keyCode === 37 && gridProperties.activeCell != 0) gridProperties.activeCell--; // left
-				if (event.keyCode === 39 && gridProperties.activeCell < (row.length - 1)) gridProperties.activeCell++; // right
+				if ([9, 39].includes(event.keyCode) && gridProperties.activeCell < (row.length - 1)) gridProperties.activeCell++; // right
 
 				/** find the active cell */
 				const newActiveCell = document.querySelector(`.data-area .cell[row-index="${gridProperties.activeRow}"][cell-index="${gridProperties.activeCell}"]`);
@@ -101,8 +106,11 @@ const configureCells = () => {
 
 			/** kill keydown event to prevent scrolling */
 			cell.addEventListener('keydown', (event) => {
-				event.preventDefault();
-				event.stopPropagation();
+				/** check for keycode */
+				if ([9, 13, 37, 38, 39, 40].includes(event.keyCode)) {
+					event.preventDefault();
+					event.stopPropagation();
+				}
 			});
 		});
 	});
@@ -128,7 +136,15 @@ const setActiveCell = (cell) => {
 		/** set focus on the input (if any) */
 		const input = cell.querySelector('input');
 		if (input) setTimeout(() => {
+			/** set the focus */
 			input.focus();
+
+			/** on blur change cell value */
+			input.addEventListener('blur', () => {
+				/** get the span.value */
+				const span = cell.querySelector('span.value');
+				span.innerText = input.value;
+			});
 		}, 10);
 	}, 10);
 };
